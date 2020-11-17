@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container my-5 text-center">
+        <button class="btn btn-danger w-100" onclick="traer()">Obtener json</button>
+        <div class="mt-5" >
+
+            <!--Tabla-->
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Estado</th>
+                  </tr>
+                </thead>
+                <tbody id="contenido">
+                  
+                </tbody>
+              </table>
+              
+        </div>
+    </div>
+
+    <script>
+        var contenido = document.querySelector("#contenido");
+        function traer(){
+            fetch('tabla.json')
+            .then(res => res.json())
+            .then(datos => {
+                //console.log(datos);
+                pintartabla(datos);
+            })
+        }
+        function pintartabla(datos){
+            contenido.innerHTML = ``;
+            for(let valor of datos){
+                //console.log(valor);
+                contenido.innerHTML += `
+                <tr>
+                    <th scope="row">${valor.id}</th>
+                    <td>${valor.nombre}</td>
+                    <td>${valor.email}</td>
+                    <td>${valor.estado ? "User Activo" : "User Desact"}</td>
+                </tr>`;
+            }
+        }
+    </script>
+</body>
+</html>

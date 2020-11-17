@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        #contenido{
+            display: flex;
+            justify-items: center;
+            align-content: center;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        .usuario{
+            padding: 1em;
+            margin: 0 auto;
+            -webkit-box-shadow: 2px 6px 12px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 2px 6px 12px 0px rgba(0,0,0,0.75);
+            box-shadow: 2px 6px 12px 0px rgba(0,0,0,0.75);
+            transition: all 0.8s ease;
+        }
+        .usuario:hover{
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5 text-center">
+        <button class="btn btn-primary w-100" onclick="traer()">Obtener nuevo usuario</button>
+        <div class="row container">
+            <div class="mt-5" id="contenido"></div>
+        </div>
+    </div>
+
+    <script>
+        var contenido = document.querySelector("#contenido");
+        function traer(){
+            fetch('https://randomuser.me/api/')
+            .then(res => res.json())
+            .then(datos => {
+                console.log(datos.results['0']);
+                //pintartabla(datos);
+                contenido.innerHTML += `
+                <div class="usuario mb-3">
+                <img src="${datos.results['0'].picture.large}" alt="avatar" class="fluid-img rounded-circle">
+                <p>Nombre: ${datos.results['0'].name.first} ${datos.results['0'].name.last}</p>  
+                <p>Pais: ${datos.results['0'].location.country}</p>
+                <p>Tel: ${datos.results['0'].phone}</p>
+                </div>
+                `;
+            })
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+[   
+    {
+    "id": 1,
+    "nombre": "harry",
+    "email": "harry@blueb.cl",
+    "estado": true 
+    },
+    {
+        "id": 2,
+        "nombre": "Debra",
+        "email": "debra@bluuweb.cl",
+        "estado": false 
+    },
+    {
+        "id": 3,
+        "nombre": "Dexter",
+        "email": "dex@bluuweb.cl",
+        "estado": false 
+    },
+    {
+        "id": 4,
+        "nombre": "Rita",
+        "email": "rita@blueb.cl",
+        "estado": true 
+    },
+    {
+        "id": 5,
+        "nombre": "julio alberto",
+        "email": "julioj1081@blueb.cl",
+        "estado": true 
+    }
+]
